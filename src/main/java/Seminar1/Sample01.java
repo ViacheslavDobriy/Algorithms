@@ -11,22 +11,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Sample01 {
 
     public static void main(String[] args) {
-        AtomicInteger counter = new AtomicInteger();
-        int lastNumber = 12;
-        System.out.printf("Sum of all numbers from 1 till %d is equal to %d, numbers of operations is %d\n",
-                lastNumber, sum1(lastNumber, counter), counter.get());
+//        AtomicInteger counter = new AtomicInteger();
+//        int lastNumber = 12;
+//        System.out.printf("Sum of all numbers from 1 till %d is equal to %d, numbers of operations is %d\n",
+//                lastNumber, sum1(lastNumber, counter), counter.get());
+//
+//        counter.set(1);
+//        System.out.printf("Sum of all numbers from 1 till %d is equal to %d, numbers of operations is %d\n",
+//                lastNumber, sum2(lastNumber), counter.get());
+//
+//        counter.set(0);
+//
+//        List<Integer> simpleNumberList = findSimpleNumbers(lastNumber, counter);
+//        for(int number : simpleNumberList) {
+//            System.out.println(number);
+//        }
+//        System.out.printf("Counter: %d\n", counter.get());
 
-        counter.set(1);
-        System.out.printf("Sum of all numbers from 1 till %d is equal to %d, numbers of operations is %d\n",
-                lastNumber, sum2(lastNumber), counter.get());
-
-        counter.set(0);
-
-        List<Integer> simpleNumberList = findSimpleNumbers(lastNumber, counter);
-        for(int number : simpleNumberList) {
-            System.out.println(number);
-        }
-        System.out.printf("Counter: %d\n", counter.get());
+        f(4);
     }
 
     public static int sum1(int lastNumber, AtomicInteger counter) {
@@ -62,5 +64,14 @@ public class Sample01 {
                 result.add(i);
         }
         return result;
+    }
+
+    public static void f(int n) {
+        System.out.println(n);
+        if(n >= 3) {
+            f(n - 1);
+            f(n - 2);
+            f(n - 2);
+        }
     }
 }
