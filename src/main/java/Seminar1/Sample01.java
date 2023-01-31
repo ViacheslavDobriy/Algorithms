@@ -1,5 +1,7 @@
 package Seminar1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -10,9 +12,21 @@ public class Sample01 {
 
     public static void main(String[] args) {
         AtomicInteger counter = new AtomicInteger();
-        int lastNumber = 10;
+        int lastNumber = 12;
         System.out.printf("Sum of all numbers from 1 till %d is equal to %d, numbers of operations is %d\n",
                 lastNumber, sum1(lastNumber, counter), counter.get());
+
+        counter.set(1);
+        System.out.printf("Sum of all numbers from 1 till %d is equal to %d, numbers of operations is %d\n",
+                lastNumber, sum2(lastNumber), counter.get());
+
+        counter.set(0);
+
+        List<Integer> simpleNumberList = findSimpleNumbers(lastNumber, counter);
+        for(int number : simpleNumberList) {
+            System.out.println(number);
+        }
+        System.out.printf("Counter: %d\n", counter.get());
     }
 
     public static int sum1(int lastNumber, AtomicInteger counter) {
@@ -22,5 +36,31 @@ public class Sample01 {
             counter.getAndIncrement();
         }
         return sum;
+    }
+
+    public static int sum2(int lastNumber) {
+        return ((1 + lastNumber) * lastNumber) / 2;
+    }
+
+    /**
+     * [2] Написать алгоритм поиска простых чисел (деляться только на себя и на 1) в диапазоне от 1 до N
+     */
+
+    public static List<Integer> findSimpleNumbers(int lastNumber, AtomicInteger counter) {
+        List<Integer> result = new ArrayList<>();
+        boolean simple;
+        for (int i = 1; i <= lastNumber ; i++) {
+            simple = true;
+            for (int j = 2; j < i; j++) {
+                counter.getAndIncrement();
+                if(i%j==0) {
+                    simple = false;
+                    break;
+                }
+            }
+            if (simple)
+                result.add(i);
+        }
+        return result;
     }
 }
