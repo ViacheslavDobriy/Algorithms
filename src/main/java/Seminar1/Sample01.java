@@ -10,6 +10,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Sample01 {
 
+    /**
+     * Домашняя работа
+     * разработать рекурсивный алгоритм решения задачи Ханойской башни
+     * @param args
+     */
     public static void main(String[] args) {
 //        AtomicInteger counter = new AtomicInteger();
 //        int lastNumber = 12;
@@ -28,7 +33,18 @@ public class Sample01 {
 //        }
 //        System.out.printf("Counter: %d\n", counter.get());
 
-        f(4);
+        long startTime = System.currentTimeMillis();
+        System.out.printf("Fibonachi for number %d is equal %d (recursion)\n", 45, fib1(45));
+        long endTime = System.currentTimeMillis();
+        long processingTime = endTime - startTime;
+        System.out.printf("Operation was completed during %d ms\n", processingTime);
+
+        startTime = System.currentTimeMillis();
+        System.out.printf("Fibonachi for number %d is equal %d (non recursion)\n", 45, fib2(45));
+        endTime = System.currentTimeMillis();
+        processingTime = endTime - startTime;
+        System.out.printf("Operation was completed during %d ms\n", processingTime);
+
     }
 
     public static int sum1(int lastNumber, AtomicInteger counter) {
@@ -73,5 +89,21 @@ public class Sample01 {
             f(n - 2);
             f(n - 2);
         }
+    }
+    
+    public static int fib1(int number) {
+        if(number == 0 || number == 1) return number;
+        return fib1(number-1) + fib1(number - 2); // 2^(n - 1)
+    }
+
+    public static int fib2(int number) {
+        if(number == 0 || number == 1) return number;  // O(n)
+        int[] numbers = new int[number+1];
+        numbers[0] = 0;
+        numbers[1] = 1;
+        for (int i = 2; i <= number; i++) {
+            numbers[i] = numbers[i-1] + numbers[i-2];
+        }
+        return numbers[number];
     }
 }
