@@ -50,13 +50,17 @@ public class Sample {
 //        processingTime = endTime - startTime;
 //        System.out.printf("Processing time of quick sort is %d ms", processingTime);
 
-        int[] testArray2 = new int[] {-4, -10, 99, -20, 22, 0, 1, 99, 100, 30};
+        int[] testArray2 = {12, 11, 13, 5, 6, 7};
         ArrayUtils.printArray(testArray2);
-        SortUtils.quickSort(testArray2);
+//        SortUtils.quickSort(testArray2);
+//        ArrayUtils.printArray(testArray2);
+//        int res = SearchUtils.binarySearch(testArray2, -5);
+//        System.out.printf("Elem %d %s", -5,
+//                res >= 0 ? String.format("was found in array in by index %d", res) : "was not found in array");
+
+        HeapSort.sort(testArray2);
         ArrayUtils.printArray(testArray2);
-        int res = SearchUtils.binarySearch(testArray2, -5);
-        System.out.printf("Elem %d %s", -5,
-                res >= 0 ? String.format("was found in array in by index %d", res) : "was not found in array");
+
     }
 
     static class SearchUtils{
