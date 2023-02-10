@@ -4,6 +4,10 @@ public class MyLinkedList {
 
     private Node head; // Ссылка на первый элемент
 
+    public Node getHead() {
+        return head;
+    }
+
     public void addFirst(int value) {
         Node node = new Node(value);
         if (head != null)
@@ -32,7 +36,7 @@ public class MyLinkedList {
             head = node;
         } else {
             Node last = head;
-            while (last != null) {
+            while (last.getNext() != null) {
                 last = last.getNext();
             }
             last.setNext(node);
