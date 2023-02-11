@@ -12,7 +12,15 @@ public class Sample1 {
         myLinkedList.addLast(4);
         myLinkedList.addLast(5);
 
-        Node head = myLinkedList.getHead();
+        System.out.println(myLinkedList.getHead().getValue());
+        System.out.println(myLinkedList.getHead().getNext().getValue());
+        System.out.println(myLinkedList.getHead().getNext().getNext().getValue());
+
+        myLinkedList.reverseLinks();
+
+        System.out.println(myLinkedList.getHead().getValue());
+        System.out.println(myLinkedList.getHead().getNext().getValue());
+        System.out.println(myLinkedList.getHead().getNext().getNext().getValue());
     }
 
     public static Node middleNode(Node head) {
