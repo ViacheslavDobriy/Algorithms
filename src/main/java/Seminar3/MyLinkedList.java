@@ -2,9 +2,10 @@ package Seminar3;
 
 public class MyLinkedList {
 
-    private Node head; // РЎСЃС‹Р»РєР° РЅР° РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚
+    private Node head; // Ссылка на первый элемент
 
     public Node getHead() {
+//        System.out.println(head.getValue());
         return head;
     }
 
@@ -30,7 +31,7 @@ public class MyLinkedList {
         return null;
     }
 
-    public void addLast (int value) {
+    public void addLast(int value) {
         Node node = new Node(value);
         if (head == null) {
             head = node;
@@ -48,13 +49,24 @@ public class MyLinkedList {
             return;
         Node node = head;
         while (node.getNext() != null) {
-            if(node.getNext().getNext() == null)
-            {
+            if (node.getNext().getNext() == null) {
                 node.setNext(null);
                 return;
             }
             node = node.getNext();
         }
         head = null;
+    }
+
+    public void reverseLinks(){
+        Node reversedPart = null;
+        Node current = head;
+        while(current != null) {
+            Node next = current.getNext();
+            current.setNext(reversedPart);
+            reversedPart = current;
+            current = next;
+        }
+        head = reversedPart;
     }
 }
